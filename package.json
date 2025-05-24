@@ -1,13 +1,21 @@
 {
   "name": "streamify",
   "version": "1.0.0",
-  "main": "index.js",
- "scripts": {
-    "build": "npm install --prefix backend && cd frontend && npm install && npm run build",
-    "start": "npm run start --prefix backend"
+  "main": "backend/server.js",
+  "scripts": {
+    "build": "npm install --prefix backend && cd frontend && npm ci && npm run build",
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "ISC"
 }
