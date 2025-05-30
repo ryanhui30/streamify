@@ -12,7 +12,7 @@ const Sidebar = () => {
       <div className="p-5 border-b border-base-300">
         <Link to="/" className="flex items-center gap-2.5">
           <ShipWheelIcon className="size-9 text-primary" />
-          <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary  tracking-wider">
+          <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary tracking-wider">
             Streamify
           </span>
         </Link>
@@ -50,7 +50,6 @@ const Sidebar = () => {
         </Link>
       </nav>
 
-      {/* USER PROFILE SECTION */}
       <div className="p-4 border-t border-base-300 mt-auto">
         <div className="flex items-center gap-3">
           <div className="avatar">
@@ -70,4 +69,5 @@ const Sidebar = () => {
     </aside>
   );
 };
+
 export default Sidebar;

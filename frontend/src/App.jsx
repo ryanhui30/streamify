@@ -1,19 +1,17 @@
 import { Navigate, Route, Routes } from "react-router";
-
-import HomePage from "./pages/HomePage.jsx";
-import SignUpPage from "./pages/SignUpPage.jsx";
-import LoginPage from "./pages/LoginPage.jsx";
-import NotificationsPage from "./pages/NotificationsPage.jsx";
-import CallPage from "./pages/CallPage.jsx";
-import ChatPage from "./pages/ChatPage.jsx";
-import OnboardingPage from "./pages/OnboardingPage.jsx";
-
 import { Toaster } from "react-hot-toast";
-
-import PageLoader from "./components/PageLoader.jsx";
-import useAuthUser from "./hooks/useAuthUser.js";
-import Layout from "./components/Layout.jsx";
-import { useThemeStore } from "./store/useThemeStore.js";
+import HomePage from "./pages/HomePage";
+import SignUpPage from "./pages/SignUpPage";
+import LoginPage from "./pages/LoginPage";
+import NotificationsPage from "./pages/NotificationsPage";
+import CallPage from "./pages/CallPage";
+import ChatPage from "./pages/ChatPage";
+import OnboardingPage from "./pages/OnboardingPage";
+import FriendsPage from "./pages/FriendsPage";
+import PageLoader from "./components/PageLoader";
+import useAuthUser from "./hooks/useAuthUser";
+import Layout from "./components/Layout";
+import { useThemeStore } from "./store/useThemeStore";
 
 const App = () => {
   const { isLoading, authUser } = useAuthUser();
@@ -52,6 +50,18 @@ const App = () => {
           }
         />
         <Route
+          path="/friends"
+          element={
+            isAuthenticated && isOnboarded ? (
+              <Layout showSidebar={true}>
+                <FriendsPage />
+              </Layout>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
+          }
+        />
+        <Route
           path="/notifications"
           element={
             isAuthenticated && isOnboarded ? (
@@ -73,7 +83,6 @@ const App = () => {
             )
           }
         />
-
         <Route
           path="/chat/:id"
           element={
@@ -86,7 +95,6 @@ const App = () => {
             )
           }
         />
-
         <Route
           path="/onboarding"
           element={
@@ -102,9 +110,9 @@ const App = () => {
           }
         />
       </Routes>
-
       <Toaster />
     </div>
   );
 };
+
 export default App;
